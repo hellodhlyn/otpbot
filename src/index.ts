@@ -1,4 +1,22 @@
-import { Console } from 'console';
+import OtpBot from './bot';
 
-const console = new Console(process.stdout, process.stderr);
-console.log('Hello, world!');
+async function main(): Promise<void> {
+  const bot = new OtpBot();
+  try {
+    await bot.init();
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+
+  bot.onTextMessage(async (body, msg) => {
+    await bot.sendExplodingMessage(msg.channel, `Hi! You sent me:\n\n${body}`);
+  });
+
+  process.on('SIGINT', async () => { await bot.shutdown(); });
+  process.on('SIGTERM', async () => { await bot.shutdown(); });
+
+  await bot.start();
+}
+
+(async () => { await main(); })();
