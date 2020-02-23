@@ -29,12 +29,13 @@ export default class OtpBot {
     await this.bot.deinit();
   }
 
-  public async sendExplodingMessage(channel: ChatChannel, body: string): Promise<void> {
-    const bodyToSend = `${body}\n\n__This message will be deleted in 30 seconds! 💣💣💣__`;
-    const sentMessage = await this.bot.chat.send(channel, { body: bodyToSend });
-    setTimeout(async () => {
-      await this.bot.chat.delete(channel, sentMessage.id);
-    }, 30 * 1000);
+  public async sendMessage(channel: ChatChannel, body: string, explosionTimeout?: number): Promise<void> {
+    const sentMessage = await this.bot.chat.send(channel, { body });
+    if (explosionTimeout && explosionTimeout > 0) {
+      setTimeout(async () => {
+        await this.bot.chat.delete(channel, sentMessage.id);
+      }, explosionTimeout * 1000);
+    }
   }
 
   public onTextMessage(callback: TextMessageCallback): void {

@@ -2,11 +2,34 @@
 
 > Time-based OTP generator via [Keybase](https://keybase.io)
 
-## Prerequisites
+## Usage
+
+Just say hello to [otpbot](https://keybase.io/otpbot) on Keybase!
+
+### Commands
+
+```text
+### Add a new OTP account. 
+add <name> <secret>
+
+### List all OTP accounts.
+list
+ls
+
+### Generate OTP.
+generate <name>
+gen      <name>
+
+### Remove the OTP account.
+remove <name>
+rm     <name>
+```
+
+## Development
+### Prerequisites
 * NodeJS 12.X or later
 * yarn
 
-## Development
 ### Setup
 ```sh
 # Install requirements
