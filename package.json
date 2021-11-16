@@ -16,7 +16,7 @@
   "dependencies": {
     "@aws/dynamodb-data-mapper": "^0.7.3",
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
-    "aws-sdk": "^2.624.0",
+    "aws-sdk": "^2.814.0",
     "keybase-bot": "^3.5.1"
   },
   "devDependencies": {
